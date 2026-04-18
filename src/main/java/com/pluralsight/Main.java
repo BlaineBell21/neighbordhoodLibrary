@@ -1,43 +1,24 @@
 package com.pluralsight;
+import java.time.LocalDate;
 import java.util.Scanner;
+import static com.pluralsight.BookRepository.allLibraryBooks;
 
-import static com.pluralsight.BookRepository.allLibraryBooks; //import for all stored books
+import static com.pluralsight.MainMenuOptions.libraryMenuOptions; //imports options for main menu
 
 public class Main {
     public static void main(String[] args){
         libraryHomeScreen();
-
     }
+
     public static void libraryHomeScreen(){
         System.out.println("Welcome to the Neighborhood Library Book Application Main Menu.");
         System.out.println("What would you like to do?");
-
         System.out.println("1. Show Available Books");
         System.out.println("2. Show Checked Out Books");
         System.out.println("3. Check In Books");
         System.out.println("4. Exit Application");
-        libraryMenuOptions(userInputInt());
+        libraryMenuOptions();
     }
-    public static String libraryMenuOptions(int userOption){
-        switch (userOption) {
-            case 1: //displays all available books
-                showAvailableBooks(allLibraryBooks());
-                Book[] arrayOfBooks = allLibraryBooks();
-                checkBookOut(arrayOfBooks);
-                break;
-            case 2: //displays all checked out books
-                showCheckedOutBooks(allLibraryBooks());
-                break;
-            case 3: //allows user to check a book in
-                checkBookIn(allLibraryBooks());
-                break;
-            case 4:
-                goodbyeMessage();
-                break;
-        }
-        return "Invalid option, please try again.";
-    }
-
 
     public static void showAvailableBooks(Book[] arrayOfBooks) {
         for (int i = 0; i < arrayOfBooks.length; i++) {
@@ -45,41 +26,75 @@ public class Main {
                 System.out.println(arrayOfBooks[i].displayBookInformation()); //if book at current index isn't checked out, prints book information
             }
         }
-        System.out.println("What book would you like to checkout? Enter in the ID number: ");
     }
 
     public static void checkBookIn(Book[] books){
+        showCheckedOutBooks(books);
+        System.out.println("Enter in the ID number of the book you'd like to return: ");
         int userBook = userInputInt();
-        for (int i = 0; i < books.length; i++){
-            if(books[i].getId() == userBook){
-                books[i].setCheckedOut(false);
-                System.out.println("Enter in your name: ");
+        for (Book book : books) {
+            if (book.getId() == userBook) {
+                book.setCheckedOut(false);
                 String name = "";
-                books[i].setCheckedOutTo(name);
-                System.out.println(books[i].displayBookInformation());
+                book.setDateBookIsDue(null);
+                book.setDateBookWasCheckedOut(null);
+                book.setCheckedOutTo(name);
+                System.out.println(book.displayBookInformation());
+                System.out.println("Book checked In.");
+            }
+        }
+    }
+
+    public static int findBookId(Book[] books){
+        int userBook = userInputInt();
+        for (Book book : books) {
+            if (book.getId() == userBook) {
+
             }
         }
     }
 
     public static void checkBookOut(Book[] books){//allows user to check out book
-        int userBook = userInputInt();
-        for (int i = 0; i < books.length; i++){
-            if(books[i].getId() == userBook){
-                books[i].setCheckedOut(true); //sets isCheckedOut to true
 
-                System.out.println("Enter in your name: ");
-                String name = userInputString();
-                books[i].setCheckedOutTo(name); //sets borrower name to user's inputted name
-                System.out.println(books[i].displayBookInformation());
+
+        boolean isCheckingBookOut = true;
+
+        while(isCheckingBookOut) {
+            LocalDate checkOutTime = LocalDate.now();
+            LocalDate dateBookIsDue = checkOutTime.plusDays(30);
+            System.out.println("Enter in the ID number of the book you'd like to check out: ");
+            findBookId(allLibraryBooks());
+            inputUserName();
+            findBookId(allLibraryBooks()).setCheckedOutTo(name); //sets borrower name to user's inputted name
+            book.setDateBookWasCheckedOut(checkOutTime);
+            book.setDateBookIsDue(dateBookIsDue);
+            System.out.println(book.displayBookInformation());
+            book.setCheckedOut(true); //sets isCheckedOut to true
+
+            System.out.println("Would you like to check out another book? Enter in yes/no: ");
+            String userInput = userInputString();
+            if (userInput.equals("no")){
+                isCheckingBookOut = false;
+
             }
         }
+        libraryHomeScreen();
     }
-
+public static String inputUserName(){
+    System.out.println("Enter in your name: ");
+    String name = userInputString();
+    return name;
+}
     public static void showCheckedOutBooks(Book arrayOfBooks[]){//shows checked out books
         for (int i = 0; i < arrayOfBooks.length; i++){
             if (arrayOfBooks[i].isCheckedOut()){ //checks if the book at the current index is checked out or not
-                System.out.println("------------------\nBook Id: " + arrayOfBooks[i].getId() + "\n" + "Book title: " + arrayOfBooks[i].getTitle() + "\nDate checked out on: " +
-                        arrayOfBooks[i].getDateBookWasCheckedOut() + "\nDate book is due: " + arrayOfBooks[i].getDateBookIsDue() + "\n------------------");
+                System.out.println("------------------\n" +
+                        "Book Id: " + arrayOfBooks[i].getId() + "\n" +
+                        "Book title: " + arrayOfBooks[i].getTitle() +
+                        "\nChecked Out by: " + arrayOfBooks[i].getCheckedOutTo() +
+                        "\nDate checked out on: " + arrayOfBooks[i].getDateBookWasCheckedOut() +
+                        "\nDate book is due: " + arrayOfBooks[i].getDateBookIsDue() +
+                        "\n------------------");
             }
         }
     }
