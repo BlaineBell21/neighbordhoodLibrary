@@ -1,7 +1,6 @@
 package com.pluralsight;
 
 import java.time.LocalDate;
-import java.util.Scanner;
 
 
 public class Book {
@@ -29,9 +28,7 @@ public class Book {
         this.dateBookIsDue = dateBookIsDue;
     }
 
-    public int getId() {
-        return id;
-    }
+
     public String displayBookInformation(){
         String bookDetails;
         bookDetails = "------------------\n" +
@@ -41,13 +38,16 @@ public class Book {
             "Author: "+ this.author + "\n" +
             "Genre: "+ this.genre + "\n" +
             "Year: " + this.publicationYear + "\n" +
+            "Checked out: "+ this.isCheckedOut + "\n"+
             "Borrower: "+ this.checkedOutTo +"\n" +
             "Borrowed Date: " + this.dateBookWasCheckedOut +"\n"+
             "Due Date: " + this.dateBookIsDue +
                 "\n------------------";
         return bookDetails;
     }
-
+    public int getId() {
+        return id;
+    }
 
     public String getIsbn() {
         return this.isbn;
@@ -113,8 +113,8 @@ public class Book {
         this.isCheckedOut = checkedOut;
     }
 
-    public void setCheckedOutTo(String checkedOutTo) {
-        this.checkedOutTo = checkedOutTo;
+    public String setCheckedOutTo(String checkedOutTo) {
+        return this.checkedOutTo = checkedOutTo;
     }
 
     public void setDateBookWasCheckedOut(LocalDate dateBookWasCheckedOut) {
