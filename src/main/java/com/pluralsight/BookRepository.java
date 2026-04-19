@@ -2,6 +2,8 @@ package com.pluralsight;
 
 import java.time.LocalDate;
 
+//repository for all available books
+
 public class BookRepository {
     public static Book[] allLibraryBooks(){
         Book book1 = new Book(1, "9780743273565","The Great Gatsby", "F. Scott Fitzgerald","Classic / Fiction",1925,false, "", null,null);

@@ -3,6 +3,7 @@ package com.pluralsight;
 import java.time.LocalDate;
 
 
+
 public class Book {
     private int id;
     private String isbn;
@@ -49,24 +50,8 @@ public class Book {
         return id;
     }
 
-    public String getIsbn() {
-        return this.isbn;
-    }
-
     public String getTitle() {
         return this.title;
-    }
-
-    public String getAuthor() {
-        return this.author;
-    }
-
-    public String getGenre() {
-        return this.genre;
-    }
-
-    public int getPublicationYear() {
-        return this.publicationYear;
     }
 
     public boolean isCheckedOut() {
@@ -85,29 +70,6 @@ public class Book {
         return this.dateBookIsDue;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-
-    public void setPublicationYear(int publicationYear) {
-        this.publicationYear = publicationYear;
-    }
 
     public void setCheckedOut(boolean checkedOut) {
         this.isCheckedOut = checkedOut;
