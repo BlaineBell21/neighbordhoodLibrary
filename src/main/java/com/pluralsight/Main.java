@@ -1,8 +1,5 @@
 package com.pluralsight;
 
-import static com.pluralsight.InputScanner.userInputInt;
-import static com.pluralsight.InputScanner.userInputString;
-
 
 public class Main {
     public static void main(String[] args){
