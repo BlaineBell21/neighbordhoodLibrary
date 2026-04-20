@@ -20,8 +20,6 @@ public class CheckOutBooks {
             if (userInput.equals("yes")) {
                 showAvailableBooks(books);
             } else if (userInput.equals("no")) {
-
-
                 isCheckingBookOut = false;
             } else {
                 System.out.println("Inputted incorrect option.");

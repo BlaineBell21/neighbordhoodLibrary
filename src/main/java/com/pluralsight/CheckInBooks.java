@@ -2,9 +2,6 @@ package com.pluralsight;
 
 import static com.pluralsight.CheckOutBooks.showCheckedOutBooks;
 import static com.pluralsight.InputScanner.userInputInt;
-//
-import static com.pluralsight.MainMenuOptions.libraryMenuOptions;
-
 
 //allows user to check in books
 //changes all book properties to reflect no longer being checked out

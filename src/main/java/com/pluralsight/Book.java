@@ -3,7 +3,6 @@ package com.pluralsight;
 import java.time.LocalDate;
 
 
-
 public class Book {
     private int id;
     private String isbn;
@@ -28,7 +27,6 @@ public class Book {
         this.dateBookWasCheckedOut = dateBookWasCheckedOut;
         this.dateBookIsDue = dateBookIsDue;
     }
-
 
     public String displayBookInformation(){
         String bookDetails;

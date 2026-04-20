@@ -9,7 +9,6 @@ public class Main {
 
     }
 
-
     public static void showAvailableBooks(Book[] books) {
         for (int i = 0; i < books.length; i++) {
             if (!books[i].isCheckedOut()) { //checks if the book at the current index is checked out or not
