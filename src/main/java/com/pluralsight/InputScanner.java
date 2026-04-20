@@ -12,4 +12,10 @@ public class InputScanner {
         Scanner read = new Scanner(System.in);
         return read.nextInt();
     }
+
+    public static String inputUserName(){
+        System.out.println("Enter in your name: ");
+        String name = userInputString();
+        return name;
+    }
 }

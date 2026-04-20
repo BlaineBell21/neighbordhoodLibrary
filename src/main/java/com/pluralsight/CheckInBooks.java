@@ -2,7 +2,7 @@ package com.pluralsight;
 
 import static com.pluralsight.CheckOutBooks.showCheckedOutBooks;
 import static com.pluralsight.InputScanner.userInputInt;
-import static com.pluralsight.Main.libraryHomeScreen;
+//
 import static com.pluralsight.MainMenuOptions.libraryMenuOptions;
 
 
@@ -25,7 +25,5 @@ public class CheckInBooks {
                 System.out.println("Book checked In.");
             }
         }
-        libraryHomeScreen();
-        libraryMenuOptions(books);
     }
 }
